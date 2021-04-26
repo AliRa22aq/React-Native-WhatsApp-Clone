@@ -6,15 +6,14 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Fontisto } from '@expo/vector-icons';
-
+import ChatScreen from '../screens/ChatScreen'
 
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import {Text, View} from 'react-native'
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
+import TabOneScreen from '../screens/ChatScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { MainTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
@@ -54,7 +53,7 @@ export default function MainTavNavigator() {
       
       <MainTab.Screen
         name="Chats"
-        component={TabTwoNavigator}
+        component={ChatScreen}
       />
 
       <MainTab.Screen
