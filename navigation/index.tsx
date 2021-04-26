@@ -16,6 +16,7 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
 import MainTavNavigator from './MainTavNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
+import ChatRoom from '../screens/ChatRoom';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -68,6 +69,13 @@ function RootNavigator() {
         }}
         
         />
+      <Stack.Screen 
+          name="ChatRoom" 
+          component={ChatRoom} 
+          // options={{ title: 'Chat Room' }} 
+          options={({route}) => ({title: route.params.name})}
+          />
+
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );

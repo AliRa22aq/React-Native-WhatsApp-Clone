@@ -1,10 +1,10 @@
 import React from 'react'
-import { Text, View, Image } from 'react-native'
+import { Text, View, Image, TouchableOpacity} from 'react-native'
 import { Chatroom } from '../../types'
 import styles from './styles'
 // import User from '../data/ChatRooms'
 import moment from 'moment';
-
+import { useNavigation } from '@react-navigation/native';
 
 
 export type ChatListItemProps = {
@@ -14,13 +14,22 @@ export type ChatListItemProps = {
 const ChatListItem = (props:ChatListItemProps) => {
 
     const {chatroom} = props
-    // console.log(chatroom)
+    //  console.log(chatroom.users[0])
     const user:any = chatroom.users[1]
 
+    const navigation = useNavigation();
 
-
+    const onClick = () => {
+        // console.warn(e)
+        navigation.navigate('ChatRoom', {
+            id: chatroom.id,
+            name: user.name
+        })
+    }
     return (
-        <View style={styles.container}>
+        <TouchableOpacity 
+            onPress={()=> onClick()}
+            style={styles.container}>
             <View style={styles.leftcontainer}> 
 
             <Image source = {{uri: user.imageUri}} style={styles.avatar} />
@@ -37,7 +46,7 @@ const ChatListItem = (props:ChatListItemProps) => {
                 {moment(chatroom.lastMessage.createdAt).format("DD/MM/YYYY")}
             </Text>
 
-        </View>
+        </TouchableOpacity>
     )
 }
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, View, FlatList} from 'react-native';
 import ChatListItem from '../components/ChatListItem';
 import ChatRoom from '../data/ChatRooms'
 
@@ -25,13 +25,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  title:{},
-  separator: {},
+  }
 });
-
-// export type Chatroom = {
-//   id: String,
-//   users: [User];
-//   lastMessage: Message;
-// }
