@@ -38,7 +38,7 @@ export type Message = {
 
 export type Chatroom = {
   id: String,
-  users: [User];
+  users: User[];
   lastMessage: Message;
 }
 
