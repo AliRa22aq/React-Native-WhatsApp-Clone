@@ -14,6 +14,7 @@ export default function TabOneScreen() {
         data={ChatRoom}
         renderItem={({item})=> <ChatListItem chatroom={item} /> }
         keyExtractor={(item)=> item.id }
+        // inverted
       />
 
     </View>

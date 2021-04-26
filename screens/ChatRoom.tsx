@@ -1,28 +1,28 @@
 import * as React from 'react';
-import {StyleSheet, View, Text, FlatList} from 'react-native';
+import {StyleSheet, View, Text, FlatList, ImageBackground} from 'react-native';
 // import ChatListItem from '../components/ChatListItem';
 // import data from '../data/ChatRooms'
 import { useRoute } from '@react-navigation/native';
 import chatRoomData from '../data/Chats'
 import ChatMessage from '../components/ChatMessage'
-
-
+import BG from '../assets/images/BG.png'
 
 export default function ChatRoom() {
-
 
     const route = useRoute();
     // console.log(route.params)
 
   return (
-    <View style={styles.container}>
+    <ImageBackground style={{width: '100%', height: '100%'}} source={BG}>
         <FlatList 
           data={chatRoomData.messages}
           renderItem = {({item})=> <ChatMessage message={item} /> }
           keyExtractor={(item)=> item.id }
+          inverted
+
         />
 
-    </View>
+    </ImageBackground>
   );
 }
 
