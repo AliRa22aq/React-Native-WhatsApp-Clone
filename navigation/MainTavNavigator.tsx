@@ -10,7 +10,7 @@ import { Fontisto } from '@expo/vector-icons';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import {Text} from 'react-native'
+import {Text, View} from 'react-native'
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -40,18 +40,17 @@ export default function MainTavNavigator() {
           fontWeight: 'bold'
         },
         showIcon: true
+        
         }}>
-
 
       <MainTab.Screen
         name="Camera"       
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <Fontisto name="camera" color={color} />,
-          tabBarLabel: () => null
+          tabBarIcon: ({ color }) => <Fontisto name="camera" size={16} color={color} />,
+          tabBarLabel: () => null,      
         }}
-      />
-
+        />
       
       <MainTab.Screen
         name="Chats"
@@ -67,8 +66,6 @@ export default function MainTavNavigator() {
         name="Calls"
         component={TabTwoNavigator}
       />
-
-
 
     </MainTab.Navigator>
   );
