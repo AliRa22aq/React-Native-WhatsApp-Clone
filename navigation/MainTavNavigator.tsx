@@ -16,6 +16,7 @@ import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/ChatScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { MainTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import CameraScreen from '../screens/CameraScreen';
 
 const MainTab = createMaterialTopTabNavigator<MainTabParamList>();
 
@@ -44,7 +45,7 @@ export default function MainTavNavigator() {
 
       <MainTab.Screen
         name="Camera"       
-        component={TabOneNavigator}
+        component={CameraScreen}
         options={{
           tabBarIcon: ({ color }) => <Fontisto name="camera" size={16} color={color} />,
           tabBarLabel: () => null,      
@@ -73,25 +74,25 @@ export default function MainTavNavigator() {
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
 
-function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
-}
+// function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
+//   return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
+// }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+// const TabOneStack = createStackNavigator<TabOneParamList>();
 
-function TabOneNavigator() {
-  return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
-      />
-    </TabOneStack.Navigator>
-  );
-}
+// function TabOneNavigator() {
+//   return (
+//     <TabOneStack.Navigator>
+//       <TabOneStack.Screen
+//         name="TabOneScreen"
+//         component={TabOneScreen}
+//         options={{ headerTitle: 'Tab One Title' }}
+//       />
+//     </TabOneStack.Navigator>
+//   );
+// }
 
 const TabTwoStack = createStackNavigator<TabTwoParamList>();
 

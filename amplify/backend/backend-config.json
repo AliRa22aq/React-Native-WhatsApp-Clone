@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "whatappclonec346c103": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
