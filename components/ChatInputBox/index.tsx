@@ -34,7 +34,10 @@ const ChatInputBox = () => {
     return (
         <View style={styles.container}>
             <View style={styles.mainContainer}> 
+            <TouchableOpacity>
             <FontAwesome5 name='laugh-beam' size={24} color="grey" />
+            </TouchableOpacity>
+
             <TextInput 
                 placeholder="Type a message"
                 multiline
@@ -43,12 +46,17 @@ const ChatInputBox = () => {
                 value={message}
                 style={styles.textInput}
                 />
+            
+            <TouchableOpacity > 
             <Entypo name='attachment' size={24} color="grey" style={styles.icon}/>
+            </TouchableOpacity>
 
+
+            <TouchableOpacity > 
             {
-                !message && <Fontisto name='camera' size={24} color="grey" style={styles.icon} />
-
+                !message && <Fontisto name='camera' size={24} color="grey" style={styles.icon} />                
             }
+            </TouchableOpacity>
             </View>
 
                 <TouchableOpacity onPress={()=> onPress()}> 

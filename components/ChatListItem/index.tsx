@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View, Image, TouchableOpacity} from 'react-native'
-import { User } from '../../types'
+import { Chatroom } from '../../types'
 import styles from './styles'
 // import User from '../data/ChatRooms'
 import moment from 'moment';
@@ -8,14 +8,13 @@ import { useNavigation } from '@react-navigation/native';
 
 
 export type ChatListItemProps = {
-    chatroom: User
+    chatroom: Chatroom
 }
 
 const ChatListItem = (props:ChatListItemProps) => {
 
     const {chatroom} = props
     //  console.log(chatroom.users[0])
-    
     const user:any = chatroom.users[1]
 
     const navigation = useNavigation();

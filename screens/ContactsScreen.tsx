@@ -1,24 +1,20 @@
 import * as React from 'react';
 import {StyleSheet, View, FlatList} from 'react-native';
-import ChatListItem from '../components/ChatListItem';
-import NewMessageButton from '../components/NewMessageButton';
-import ChatRoom from '../data/ChatRooms'
+import ContacListItem from '../components/ContacListItem';
+import users from '../data/Users'
 
 
-
-export default function TabOneScreen() {
+export default function Contacts() {
   return (
     <View style={styles.container}>
 
       <FlatList
       style={{width: '100%'}}
-        data={ChatRoom}
-        renderItem={({item})=> <ChatListItem chatroom={item} /> }
+        data={users}
+        renderItem={({item})=> <ContacListItem user = {item} /> }
         keyExtractor={(item)=> item.id }
         // inverted
       />
-      
-    <NewMessageButton />
     </View>
   );
 }

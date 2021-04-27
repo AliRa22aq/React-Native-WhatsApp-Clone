@@ -15,7 +15,8 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
 import MainTavNavigator from './MainTavNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
-import ChatRoom from '../screens/ChatRoom';
+import ChatRoomScreen from '../screens/ChatRoomScreen';
+import ContactsScreen from '../screens/ContactsScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -51,7 +52,7 @@ function RootNavigator() {
         name="Root" 
         component={MainTavNavigator} 
         options={{
-          title: "WhatsApp",
+          title: "ChatAppByAli",
           headerRight: () => {
             return (
                 <View style={{
@@ -70,9 +71,9 @@ function RootNavigator() {
         />
       <Stack.Screen 
           name="ChatRoom" 
-          component={ChatRoom} 
+          component={ChatRoomScreen} 
           // options={{ title: 'Chat Room' }} 
-          options={ ({route}) => ({
+          options={ ({route}:any) => ({
             title: route.params.name,
             headerRight: ()=> {
               return (
@@ -93,6 +94,7 @@ function RootNavigator() {
         }
           />
 
+      <Stack.Screen name="Contacts" component={ContactsScreen} options={{ title: 'Contacts' }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );
