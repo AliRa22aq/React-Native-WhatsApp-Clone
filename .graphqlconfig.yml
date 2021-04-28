@@ -1,0 +1,15 @@
+projects:
+  whatappclone-dev:
+    schemaPath: graphql/schema.json
+    includes:
+      - src/graphql/**/*.ts
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: typescript
+        generatedFileName: src/API.ts
+        docsFilePath: src/graphql
+        region: eu-central-1
+        apiId: 5ou7vmehujf7rk5xjey6o3p754
+        maxDepth: 2

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {StyleSheet, View, FlatList} from 'react-native';
 import ChatListItem from '../components/ChatListItem';
+import LogOutButton from '../components/LogOutButton';
 import NewMessageButton from '../components/NewMessageButton';
 import ChatRoom from '../data/ChatRooms'
 
@@ -19,6 +20,7 @@ export default function TabOneScreen() {
       />
       
     <NewMessageButton />
+    <LogOutButton />
     </View>
   );
 }

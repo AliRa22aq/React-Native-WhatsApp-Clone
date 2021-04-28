@@ -47,7 +47,7 @@
     "@aws-amplify/api-graphql" "1.2.30"
     "@aws-amplify/api-rest" "1.2.30"
 
-"@aws-amplify/auth@3.4.30":
+"@aws-amplify/auth@^3.4.30", "@aws-amplify/auth@3.4.30":
   "integrity" "sha512-DYBDKU8JGZB8LRSVUj3BUKU/4qOcWkjfYoaVr3T3fvJvE2n2YOcXBVsYXUq24q1UlAuTfIbZQCrsbL7kBAxtAg=="
   "resolved" "https://registry.npmjs.org/@aws-amplify/auth/-/auth-3.4.30.tgz"
   "version" "3.4.30"
@@ -64,7 +64,7 @@
   dependencies:
     "@aws-amplify/core" "3.8.22"
 
-"@aws-amplify/core@3.8.22":
+"@aws-amplify/core@^3.8.22", "@aws-amplify/core@3.8.22":
   "integrity" "sha512-Plw0Gr6ik223bjBch/YicIUAhYTIEc8W3hx52u8jawpGMi1bcwmNAiuMMBvlSl50edbhmPgIw24GtyZNHLYDgQ=="
   "resolved" "https://registry.npmjs.org/@aws-amplify/core/-/core-3.8.22.tgz"
   "version" "3.8.22"
@@ -3640,6 +3640,17 @@
     "json-schema-traverse" "^0.4.1"
     "uri-js" "^4.2.2"
 
+"amazon-cognito-identity-js@^4.5.4":
+  "integrity" "sha512-6hSdurLaOwDsmpax5Q2a8/n7sUB8A3z0I9BzwmzAOXKEx7OMMFZYUOiP0M3zxPQzu96S67a8JsYB9GdO/w52tg=="
+  "resolved" "https://registry.npmjs.org/amazon-cognito-identity-js/-/amazon-cognito-identity-js-4.5.4.tgz"
+  "version" "4.5.4"
+  dependencies:
+    "buffer" "4.9.1"
+    "crypto-js" "^3.3.0"
+    "fast-base64-decode" "^1.0.0"
+    "isomorphic-unfetch" "^3.0.0"
+    "js-cookie" "^2.2.1"
+
 "amazon-cognito-identity-js@4.6.0":
   "integrity" "sha512-D62rs0mcfA4APccAAsliWh1beOU7MBu/xj21W0kSOsjdc9diujgLHwHiHN6z91HSmJvztf69PUq4w4KuVKEjCA=="
   "resolved" "https://registry.npmjs.org/amazon-cognito-identity-js/-/amazon-cognito-identity-js-4.6.0.tgz"
@@ -4657,6 +4668,15 @@
   dependencies:
     "base64-js" "^1.3.1"
     "ieee754" "^1.1.13"
+
+"buffer@4.9.1":
+  "integrity" "sha1-bRu2AbB6TvztlwlBMgkwJ8lbwpg="
+  "resolved" "https://registry.npmjs.org/buffer/-/buffer-4.9.1.tgz"
+  "version" "4.9.1"
+  dependencies:
+    "base64-js" "^1.0.2"
+    "ieee754" "^1.1.4"
+    "isarray" "^1.0.0"
 
 "buffer@4.9.2":
   "integrity" "sha512-xq+q3SRMOxGivLhBNaUdC64hDTQwejJ+H0T/NB1XMtTVEwNTrfFF3gAxiyW0Bu/xWEGhjVKgUcMhCrUy2+uCWg=="
