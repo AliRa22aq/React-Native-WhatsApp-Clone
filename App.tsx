@@ -50,7 +50,7 @@ function App() {
         bypassCache: true
       })
 
-      console.log(userInfo)
+      // console.log(userInfo)
      
       if (userInfo) {
         //get the user froom Backend with the user ID from Auth
@@ -60,7 +60,7 @@ function App() {
               ))
 
         if (userData.data.getUser) {
-          console.log('User is already registered in the database');
+          // console.log('User is already registered in the database');
           return;
         }
 
@@ -70,7 +70,7 @@ function App() {
           imageUri:getRandomUmages(),
           status: "Hye I am using WhatsAppByAli"
         }
-        console.log(newUser)
+        // console.log(newUser)
 
           await API.graphql(
             graphqlOperation(
