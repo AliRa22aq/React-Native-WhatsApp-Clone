@@ -8,7 +8,7 @@ import {API, graphqlOperation } from 'aws-amplify';
 export default function Contacts() {
 
   const [users, setUsers] = useState([]);
-  console.log(users)
+  // console.log(users)
 
   useEffect(() => {
     const fetchUsers = async () => {
