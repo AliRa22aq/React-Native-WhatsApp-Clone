@@ -1,4 +1,3 @@
-  
 type User @model {
   id: ID!
   name: String!
@@ -21,5 +20,22 @@ type ChatRoomUser
 type ChatRoom @model {
   id: ID!
   chatRoomUsers: [ChatRoomUser] @connection(keyName: "byChatRoom", fields: ["id"])
+  messages: [Message]  @connection(keyName: "byChatRoom", fields: ["id"])
+  lastMessageID: ID!
+  lastMessage: Message @connection(fields: ["lastMessageID"])
 }
 
+type Message
+@model
+@key(
+  name: "byChatRoom",
+  fields: ["chatRoomID", "createdAt"],
+  queryField: "messagesByChatRoom") {
+  id: ID!
+  createdAt: String!
+  content: String!
+  userID: ID!
+  chatRoomID: ID!
+  user: User @connection(fields: ["userID"])
+  chatRoom: ChatRoom @connection(fields: ["chatRoomID"])
+}
