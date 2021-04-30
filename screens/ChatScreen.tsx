@@ -33,7 +33,7 @@ export default function ChatScreen() {
           )
         )
         //items[0].chatRoom.chatRoomUsers.items
-        console.log(userData.data.getUser.chatRoomUser.items)
+        // console.log(userData.data.getUser.chatRoomUser.items)
         setChatRooms(userData.data.getUser.chatRoomUser.items)
 
       } catch(e){
@@ -43,7 +43,6 @@ export default function ChatScreen() {
     }
     fetchChatRooms()
   }, [])
-
 
 
   return (

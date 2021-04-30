@@ -9,16 +9,17 @@ import ChatMessage from '../components/ChatMessage'
 import BG from '../assets/images/BG.png'
 import ChatInputBox from '../components/ChatInputBox';
 import {API, graphqlOperation, Auth} from 'aws-amplify';
+
 import {messagesByChatRoom} from './messageByChatQuery'
+import {onCreateMessage} from '../src/graphql/subscriptions'
+
+
 
 export default function ChatRoom() {
 
   const [messages, setMessages] = useState([])
   const [myId, setMyId] = useState(null);
   
-  console.log(messages)
-
-
     const route = useRoute();
     console.log(route.params.id)
 
@@ -44,6 +45,25 @@ export default function ChatRoom() {
         setMyId(userInfo.attributes.sub);
       }
       getMyId();
+    }, [])
+
+    useEffect( ()=> {
+      const subscription = API.graphql(
+        graphqlOperation(onCreateMessage)
+      ).subscribe({
+        next: (data) => {
+          // console.log('data from subsriptioon')
+          // console.log(data.value.data)
+          const newMessage = data.value.data.onCreateMessage
+          if(newMessage.chatRoomID !== route.params.id ){
+            return;
+          }
+          setMessages(x => [newMessage, ...x]);
+        }
+      });
+
+      return () => subscription.unsubscribe();
+
     }, [])
 
   return (
