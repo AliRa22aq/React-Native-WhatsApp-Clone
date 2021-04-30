@@ -14,6 +14,8 @@ export type ChatListItemProps = {
 const ChatListItem = (props:ChatListItemProps) => {
 
     const {chatRoom} = props
+    console.log('chatRoom')
+    console.log(chatRoom)
 
     const [ otherUser, setOtherUser] = useState(null);
 
@@ -58,16 +60,22 @@ const ChatListItem = (props:ChatListItemProps) => {
             <Image source = {{uri: otherUser?.imageUri}} style={styles.avatar} />
 
                 <View style={styles.midcontainer}> 
-                    {/* <Text numberOfLines={1} style={styles.lastmessage}> {otherUser?.status} </Text>*/}
-                    <Text numberOfLines={1} style={styles.lastmessage}> {otherUser?.name} </Text>
-                    {/* <Text> Hello </Text>  */}
+                    <Text style={styles.username}> {otherUser?.name} </Text>
+                    <Text numberOfLines={2} 
+                          style={styles.lastmessage}> 
+                            {chatRoom.lastMessage?
+                                `${chatRoom.lastMessage.user.name}: ${chatRoom.lastMessage.content}`     :
+                                null
+                            } 
+                                
+                                </Text>
                 </View>
 
             </View>
 
             {/* <Text> {chatRoom.lastMessage.createdAt} </Text> */}
             <Text style={styles.time} > 
-                {/* {moment(chatRoom.lastMessage.createdAt).format("DD/MM/YYYY")} */}
+                {chatRoom.lastMessage && moment(chatRoom.lastMessage.updatedAt).format("DD/MM/YYYY")}
             </Text>
 
         </TouchableOpacity>

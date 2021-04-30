@@ -24,6 +24,16 @@ export const getUser = /* GraphQL */ `
                         }
                     }
                 }
+                lastMessage {
+                    id
+                    createdAt
+                    content
+                    updatedAt
+                    user {
+                      id
+                      name
+                    }
+                }
             }
         }
         nextToken
