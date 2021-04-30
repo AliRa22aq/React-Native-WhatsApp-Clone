@@ -20,22 +20,25 @@ const ContacListItem = (props:ContacListItemProps) => {
 
 
     const {user} = props
-
-    // const navigation = useNavigation();
-
+    //  console.log(user)
 
     // On click we need to ask user to make a new chat room and add other users in it
     const onClick = async () => {
         // Navigate to chatroom with this user id
         try{
+            console.log('newChatRoomData')
+
             // 1. Create new chat room
             const newChatRoomData = await API.graphql(
                 graphqlOperation(
-                    createChatRoom,
-                    {input: {}}
+                  createChatRoom, {
+                    input: {
+                         lastMessageID: "176ef15d-3252-4b5a-994c-410f35ba3f0e"
+                    }
+                  }
                 )
-            )
-            // console.log(newChatRoomData)
+              )
+            console.log('newChatRoomData')
             if (!newChatRoomData){
                 console.log("Failed to create a chat");
                 return;
@@ -72,12 +75,13 @@ const ContacListItem = (props:ContacListItemProps) => {
 
         navigation.navigate('ChatRoom', {
             id: newChatRoom.id,
-            name: "Hard codded name"
+            name: "Hardcoded name"
         })
 
 
         } catch(e){
-            console.log("Error: "+ e)
+            console.log("ErrorErrorError")
+            console.log(e)
         }
 
         }

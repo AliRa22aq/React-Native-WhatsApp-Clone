@@ -33,22 +33,13 @@ export default function ChatScreen() {
           )
         )
         //items[0].chatRoom.chatRoomUsers.items
-        // console.log(userData.data.getUser.chatRoomUser.items)
+        console.log(userData.data.getUser.chatRoomUser.items)
         setChatRooms(userData.data.getUser.chatRoomUser.items)
 
-        // Object {
-        //   "chatRoom": Object {
-        //     "chatRoomUsers": Object {
-        //       "items": Array [
-        //         Object {
-        //           "user": Object {
-
-        // setChatRooms(userData)
-
       } catch(e){
+        console.log("From CHat Scrreeeeeeen")
         console.log("Error :" + e)
       }
-
     }
     fetchChatRooms()
   }, [])
@@ -61,7 +52,7 @@ export default function ChatScreen() {
       <FlatList
       style={{width: '100%'}}
         data={chatRooms}
-        renderItem={({item})=> <ChatListItem chatRoom={item} /> }
+        renderItem={({item})=> <ChatListItem chatRoom={item.chatRoom} /> }
         keyExtractor={(item)=> item.id }
         // inverted
       />

@@ -17,49 +17,50 @@ const ChatListItem = (props:ChatListItemProps) => {
 
     const [ otherUser, setOtherUser] = useState(null);
 
-
-    console.log(chatRoom.chatRoom.chatRoomUsers.items[0].user)
-    // chatRoomUsers
-
-
-    const user:any = chatRoom.chatRoom.chatRoomUsers.items[1].user
-
-
     useEffect(() => {
         const getOtherUser = async () => {
-          const userInfo = await Auth.currentAuthenticatedUser();
-          if (chatRoom.chatRoomUsers.items[0].user.id === userInfo.attributes.sub) {
-            setOtherUser(chatRoom.chatRoomUsers.items[1].user);
+
+            const userInfo = await Auth.currentAuthenticatedUser({bypassCache: true})
+                    
+           if (chatRoom.chatRoomUsers.items[0].user.id === userInfo.attributes.sub) {
+              
+          setOtherUser(chatRoom.chatRoomUsers.items[1].user);
+
           } else {
+            setOtherUser(chatRoom.chatRoomUsers.items[0].user);
+
             setOtherUser(chatRoom.chatRoomUsers.items[0].user);
           }
         }
         getOtherUser();
       }, [])
 
-
-
     const navigation = useNavigation();
 
     const onClick = () => {
-        // console.warn(e)
+        console.warn('CLICKED')
         navigation.navigate('ChatRoom', {
             id: chatRoom.id,
             name: otherUser.name,
         })
     }
+
+    if (!otherUser) {
+        return null;
+      }
+
     return (
         <TouchableOpacity 
             onPress={()=> onClick()}
             style={styles.container}>
             <View style={styles.leftcontainer}> 
 
-            <Image source = {{uri: user.imageUri}} style={styles.avatar} />
+            <Image source = {{uri: otherUser?.imageUri}} style={styles.avatar} />
 
                 <View style={styles.midcontainer}> 
-                    <Text style={styles.username}> {user.name} </Text>
-                    {/* <Text numberOfLines={1} style={styles.lastmessage}> {chatRoom.lastMessage.content} </Text> */}
-                    <Text> Hello </Text>
+                    {/* <Text numberOfLines={1} style={styles.lastmessage}> {otherUser?.status} </Text>*/}
+                    <Text numberOfLines={1} style={styles.lastmessage}> {otherUser?.name} </Text>
+                    {/* <Text> Hello </Text>  */}
                 </View>
 
             </View>

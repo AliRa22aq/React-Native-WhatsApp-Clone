@@ -7,15 +7,20 @@ import styles from './styles';
 
 export type ChatMessageProps = {
     message: Message;
+    myId: String;
 }
 
 const index = (props: ChatMessageProps) => {
 
-    const {message} =  props;
+    const {message, myId} =  props;
+    console.log('myId')
+    console.log(myId)
+
 
     const isMyMessage = () => {
-        return message.user.id === "u1"
+        return message.user.id === myId
     }
+    console.log(isMyMessage())
 
     return (
         <View style={styles.container}>

@@ -139,7 +139,7 @@ export const deleteChatRoomUser = /* GraphQL */ `
       updatedAt
     }
   }
-`;
+`; 
 export const createChatRoom = /* GraphQL */ `
   mutation CreateChatRoom(
     $input: CreateChatRoomInput!
