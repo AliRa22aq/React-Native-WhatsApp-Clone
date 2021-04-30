@@ -58,7 +58,7 @@ export default function ChatRoom() {
           if(newMessage.chatRoomID !== route.params.id ){
             return;
           }
-          setMessages(x => [newMessage, ...x]);
+          setMessages(messages => [newMessage, ...messages]);
         }
       });
 

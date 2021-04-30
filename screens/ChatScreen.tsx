@@ -13,12 +13,14 @@ import {
 } from 'aws-amplify'
 
 import {getUser} from './queries'
+import {updateChatRoom} from '../src/graphql/mutations'
 
 export default function ChatScreen() {
 
   const [chatRooms, setChatRooms] = useState([])
 
   // console.log(chatRooms)
+
 
   useEffect(()=> {
     const fetchChatRooms = async () => {
@@ -43,6 +45,33 @@ export default function ChatScreen() {
     }
     fetchChatRooms()
   }, [])
+
+
+  useEffect( ()=> {
+
+    const subscription = API.graphql(
+      graphqlOperation(updateChatRoom)
+    ).subscribe({
+      next: ({ provider, value }) => console.log({ provider, value }),
+      error: error => console.warn(error)
+    });
+
+
+    // const subscription = API.graphql(graphqlOperation(updateChatRoom)).subscribe({
+    //   next: (data) => console.log(data)
+    // })
+  //     .subscribe({
+  //     next: (data) => {
+  //       console.log('data from subsriptioon')
+  // //       console.log(data)
+  // //       // const newMessage = data.value.data.onCreateMessage
+  //     }
+  //   });
+
+  //   return () => subscription.unsubscribe();
+
+  }, [])
+
 
 
   return (

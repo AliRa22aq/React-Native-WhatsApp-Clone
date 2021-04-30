@@ -67,8 +67,6 @@ const ChatInputBox = (props) => {
                 )
             )
 
-            //   console.log('newMessageData')
-            //   console.log(newMessageData)
             await updateChatRoomLastMessage(newMessageData.data.createMessage.id)
 
         } catch (e) {

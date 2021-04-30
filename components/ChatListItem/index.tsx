@@ -1,22 +1,39 @@
 import React, {useEffect, useState} from 'react'
-import { Text, View, Image, TouchableOpacity} from 'react-native'
+import { Text, View, Image, TouchableOpacity, Pressable} from 'react-native'
 import { Chatroom } from '../../types'
 import styles from './styles'
 // import User from '../data/ChatRooms'
 import moment from 'moment';
 import { useNavigation } from '@react-navigation/native';
-import {Auth} from 'aws-amplify'
+
+import {API, Auth, graphqlOperation} from 'aws-amplify'
+import { deleteChatRoom } from '../../src/graphql/mutations';
 
 export type ChatListItemProps = {
     chatRoom: Chatroom
 }
 
+
 const ChatListItem = (props:ChatListItemProps) => {
-
+    
     const {chatRoom} = props
-    // console.log('chatRoom')
-    // console.log(chatRoom)
 
+    const deleteMessage = async () => {
+
+            console.log(chatRoom.id)
+                await API.graphql(
+                    graphqlOperation(
+                        deleteChatRoom, {
+                            input: {
+                                id: chatRoom.id
+                            }
+                        }
+                
+                    )
+                )
+
+    }
+    
     const [ otherUser, setOtherUser] = useState(null);
 
     useEffect(() => {
@@ -52,6 +69,7 @@ const ChatListItem = (props:ChatListItemProps) => {
       }
 
     return (
+        <View> 
         <TouchableOpacity 
             onPress={()=> onClick()}
             style={styles.container}>
@@ -68,7 +86,7 @@ const ChatListItem = (props:ChatListItemProps) => {
                                 null
                             } 
                                 
-                                </Text>
+                    </Text>
                 </View>
 
             </View>
@@ -77,8 +95,13 @@ const ChatListItem = (props:ChatListItemProps) => {
             <Text style={styles.time} > 
                 {chatRoom.lastMessage && moment(chatRoom.lastMessage.updatedAt).format("DD/MM/YYYY")}
             </Text>
-
         </TouchableOpacity>
+            <View style={{width: 50, position: 'absolute', left: 200 }}>
+                    <TouchableOpacity onPress={deleteMessage}> 
+                    <Text> Delete </Text> 
+                    </TouchableOpacity>
+            </View>
+        </View>
     )
 }
 

@@ -4,6 +4,9 @@ import { View, Text } from 'react-native';
 import {Message} from '../../types'
 import styles from './styles';
 
+import { useRoute } from '@react-navigation/native';
+
+
 
 export type ChatMessageProps = {
     message: Message;
@@ -11,6 +14,9 @@ export type ChatMessageProps = {
 }
 
 const index = (props: ChatMessageProps) => {
+
+    const route = useRoute();
+    console.log(route.params.id)
 
     const {message, myId} =  props;
 
