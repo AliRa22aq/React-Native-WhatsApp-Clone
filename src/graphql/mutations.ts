@@ -1,7 +1,3 @@
-/* tslint:disable */
-/* eslint-disable */
-// this is an auto generated file. This will be overwritten
-
 export const createUser = /* GraphQL */ `
   mutation CreateUser(
     $input: CreateUserInput!
@@ -13,6 +9,13 @@ export const createUser = /* GraphQL */ `
       imageUri
       status
       chatRoomUser {
+        items {
+          id
+          userID
+          chatRoomID
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -31,6 +34,13 @@ export const updateUser = /* GraphQL */ `
       imageUri
       status
       chatRoomUser {
+        items {
+          id
+          userID
+          chatRoomID
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -49,6 +59,13 @@ export const deleteUser = /* GraphQL */ `
       imageUri
       status
       chatRoomUser {
+        items {
+          id
+          userID
+          chatRoomID
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -70,12 +87,29 @@ export const createChatRoomUser = /* GraphQL */ `
         name
         imageUri
         status
+        chatRoomUser {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       chatRoom {
         id
+        chatRoomUsers {
+          nextToken
+        }
+        messages {
+          nextToken
+        }
         lastMessageID
+        lastMessage {
+          id
+          createdAt
+          content
+          userID
+          chatRoomID
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -98,12 +132,29 @@ export const updateChatRoomUser = /* GraphQL */ `
         name
         imageUri
         status
+        chatRoomUser {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       chatRoom {
         id
+        chatRoomUsers {
+          nextToken
+        }
+        messages {
+          nextToken
+        }
         lastMessageID
+        lastMessage {
+          id
+          createdAt
+          content
+          userID
+          chatRoomID
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -126,12 +177,29 @@ export const deleteChatRoomUser = /* GraphQL */ `
         name
         imageUri
         status
+        chatRoomUser {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       chatRoom {
         id
+        chatRoomUsers {
+          nextToken
+        }
+        messages {
+          nextToken
+        }
         lastMessageID
+        lastMessage {
+          id
+          createdAt
+          content
+          userID
+          chatRoomID
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -139,7 +207,7 @@ export const deleteChatRoomUser = /* GraphQL */ `
       updatedAt
     }
   }
-`; 
+`;
 export const createChatRoom = /* GraphQL */ `
   mutation CreateChatRoom(
     $input: CreateChatRoomInput!
@@ -148,9 +216,24 @@ export const createChatRoom = /* GraphQL */ `
     createChatRoom(input: $input, condition: $condition) {
       id
       chatRoomUsers {
+        items {
+          id
+          userID
+          chatRoomID
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       messages {
+        items {
+          id
+          createdAt
+          content
+          userID
+          chatRoomID
+          updatedAt
+        }
         nextToken
       }
       lastMessageID
@@ -160,6 +243,20 @@ export const createChatRoom = /* GraphQL */ `
         content
         userID
         chatRoomID
+        user {
+          id
+          name
+          imageUri
+          status
+          createdAt
+          updatedAt
+        }
+        chatRoom {
+          id
+          lastMessageID
+          createdAt
+          updatedAt
+        }
         updatedAt
       }
       createdAt
@@ -175,9 +272,24 @@ export const updateChatRoom = /* GraphQL */ `
     updateChatRoom(input: $input, condition: $condition) {
       id
       chatRoomUsers {
+        items {
+          id
+          userID
+          chatRoomID
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       messages {
+        items {
+          id
+          createdAt
+          content
+          userID
+          chatRoomID
+          updatedAt
+        }
         nextToken
       }
       lastMessageID
@@ -187,6 +299,20 @@ export const updateChatRoom = /* GraphQL */ `
         content
         userID
         chatRoomID
+        user {
+          id
+          name
+          imageUri
+          status
+          createdAt
+          updatedAt
+        }
+        chatRoom {
+          id
+          lastMessageID
+          createdAt
+          updatedAt
+        }
         updatedAt
       }
       createdAt
@@ -202,9 +328,24 @@ export const deleteChatRoom = /* GraphQL */ `
     deleteChatRoom(input: $input, condition: $condition) {
       id
       chatRoomUsers {
+        items {
+          id
+          userID
+          chatRoomID
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       messages {
+        items {
+          id
+          createdAt
+          content
+          userID
+          chatRoomID
+          updatedAt
+        }
         nextToken
       }
       lastMessageID
@@ -214,6 +355,20 @@ export const deleteChatRoom = /* GraphQL */ `
         content
         userID
         chatRoomID
+        user {
+          id
+          name
+          imageUri
+          status
+          createdAt
+          updatedAt
+        }
+        chatRoom {
+          id
+          lastMessageID
+          createdAt
+          updatedAt
+        }
         updatedAt
       }
       createdAt
@@ -237,12 +392,29 @@ export const createMessage = /* GraphQL */ `
         name
         imageUri
         status
+        chatRoomUser {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       chatRoom {
         id
+        chatRoomUsers {
+          nextToken
+        }
+        messages {
+          nextToken
+        }
         lastMessageID
+        lastMessage {
+          id
+          createdAt
+          content
+          userID
+          chatRoomID
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -266,12 +438,29 @@ export const updateMessage = /* GraphQL */ `
         name
         imageUri
         status
+        chatRoomUser {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       chatRoom {
         id
+        chatRoomUsers {
+          nextToken
+        }
+        messages {
+          nextToken
+        }
         lastMessageID
+        lastMessage {
+          id
+          createdAt
+          content
+          userID
+          chatRoomID
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -295,12 +484,29 @@ export const deleteMessage = /* GraphQL */ `
         name
         imageUri
         status
+        chatRoomUser {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       chatRoom {
         id
+        chatRoomUsers {
+          nextToken
+        }
+        messages {
+          nextToken
+        }
         lastMessageID
+        lastMessage {
+          id
+          createdAt
+          content
+          userID
+          chatRoomID
+          updatedAt
+        }
         createdAt
         updatedAt
       }

@@ -7,36 +7,36 @@ export const getUser = /* GraphQL */ `
       status
       chatRoomUser {
         items {
-            id
-            userID
-            chatRoomID
-            createdAt
-            updatedAt
-            chatRoom {
-                id
-                chatRoomUsers {
-                    items {
-                        user {
-                            id
-                            name
-                            imageUri
-                            status
-                        }
-                    }
-                }
-                lastMessage {
+          id
+          userID
+          chatRoomID
+          createdAt
+          updatedAt
+          chatRoom {
+              id
+              chatRoomUsers {
+                  items {
+                      user {
+                          id
+                          name
+                          imageUri
+                          status
+                      }
+                  }
+              }
+              lastMessage {
+                  id
+                  createdAt
+                  content
+                  updatedAt
+                  user {
                     id
-                    createdAt
-                    content
-                    updatedAt
-                    user {
-                      id
-                      name
-                    }
-                }
-            }
-        }
-        nextToken
+                    name
+                  }
+              }
+          }
+      }
+      nextToken
       }
       createdAt
       updatedAt
