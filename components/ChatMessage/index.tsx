@@ -1,10 +1,13 @@
 import moment from 'moment';
 import React from 'react'
-import { View, Text } from 'react-native';
+import { View, Text, Pressable, Alert } from 'react-native';
 import { Message } from '../../types'
 import styles from './styles';
 
 import { useRoute } from '@react-navigation/native';
+import { API, graphqlOperation } from 'aws-amplify'
+import { deleteMessage } from '../../src/graphql/mutations';
+
 
 export type ChatMessageProps = {
     message: Message;
@@ -18,14 +21,46 @@ const index = (props: ChatMessageProps) => {
     // console.log(route.params.name)
 
     const { message, myId } = props;
+    // console.log('message.id')
+    // console.log(message.id)
 
     const isMyMessage = () => {
         return message.user.id === myId
     }
-    console.log(isMyMessage())
 
-    return (
-        <View style={styles.container}>
+    // deleteMessageFunction
+    const deleteMessageFunction = async () => {
+        await API.graphql(
+            graphqlOperation(
+                deleteMessage, {
+                input: {
+                    id: message.id
+                }
+            }
+            )
+        )
+    }
+
+    const showAlert = () => {
+        Alert.alert(
+            "Excuse me",
+            "What to delete this message?",
+            [
+                {
+                    text: "Yes",
+                    onPress: deleteMessageFunction,
+                },
+                {
+                    text: "No",
+                },
+            ],
+        )
+    }
+
+
+        
+        return (
+            <Pressable style={styles.container} onLongPress={showAlert}>
             <View style={[
                 styles.messageBox, {
                     backgroundColor: isMyMessage() ? '#DCF8C5' : "white",
@@ -39,7 +74,7 @@ const index = (props: ChatMessageProps) => {
                 <Text style={styles.message}>{message.content}  </Text>
                 <Text style={styles.time}>{moment(message.createdAt).fromNow()}  </Text>
             </View>
-        </View>
+        </Pressable>
     )
 }
 

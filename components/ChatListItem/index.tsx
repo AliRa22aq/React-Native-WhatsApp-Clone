@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { API, Auth, graphqlOperation } from 'aws-amplify'
 import { deleteChatRoom } from '../../src/graphql/mutations';
+import { messagesByChatRoom } from '../../src/graphql/queries';
 // import { onUpdateChatRoom } from '../../src/graphql/subscriptions'
 
 
@@ -24,7 +25,7 @@ const ChatListItem = (props: ChatListItemProps) => {
 
     const deleteMessage = async () => {
 
-        console.log(chatRoom.id)
+        // console.log(chatRoom.id)
         await API.graphql(
             graphqlOperation(
                 deleteChatRoom, {
@@ -54,7 +55,12 @@ const ChatListItem = (props: ChatListItemProps) => {
             }
         }
         getOtherUser();
+
     }, [])
+
+
+
+
 
     const navigation = useNavigation();
 
@@ -73,6 +79,7 @@ const ChatListItem = (props: ChatListItemProps) => {
     return (
         <View>
             <TouchableOpacity
+                onLongPress={()=> console.warn("Long pressed")}
                 onPress={() => onClick()}
                 style={styles.container}>
                 <View style={styles.leftcontainer}>

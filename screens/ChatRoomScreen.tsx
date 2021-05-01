@@ -1,28 +1,31 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, FlatList, ImageBackground } from 'react-native';
-// import ChatListItem from '../components/ChatListItem';
-// import data from '../data/ChatRooms'
 import { useRoute } from '@react-navigation/native';
-// import chatRoomData from '../data/Chats'
 import ChatMessage from '../components/ChatMessage'
 import BG from '../assets/images/BG.png'
 import ChatInputBox from '../components/ChatInputBox';
 import { API, graphqlOperation, Auth } from 'aws-amplify';
 
 import { messagesByChatRoom } from './messageByChatQuery'
-import { onCreateMessage } from '../src/graphql/subscriptions'
+import { onCreateMessage, onDeleteMessage } from '../src/graphql/subscriptions'
 
 
 
 export default function ChatRoom() {
 
   const [messages, setMessages] = useState([])
+
   const [myId, setMyId] = useState(null);
+
+  console.log('messages')
+  console.log(messages)
 
   const route = useRoute();
   // console.log(route.params.id)
 
+
+  //GetMessagesByChatRoom
   useEffect(() => {
     const fetchMessages = async () => {
       const messageData = await API.graphql(
@@ -39,6 +42,7 @@ export default function ChatRoom() {
     fetchMessages()
   }, [])
 
+  //getMyId
   useEffect(() => {
     const getMyId = async () => {
       const userInfo = await Auth.currentAuthenticatedUser();
@@ -47,17 +51,13 @@ export default function ChatRoom() {
     getMyId();
   }, [])
 
+  //onCreateMessage subsription
   useEffect(() => {
     const subscription = API.graphql(
       graphqlOperation(onCreateMessage)
     ).subscribe({
       next: (data) => {
-        // console.log('data from subsriptioon')
-        // console.log(data.value.data.onCreateMessage)
         const newMessage = data.value.data.onCreateMessage
-        console.log('newMessagenewMessagenewMessagenewMessage')
-        console.log(data.value.data.onCreateMessage)
-        console.log('newMenewMessagenewMessagenewMessagessage')
 
         if (newMessage.chatRoomID !== route.params.id) {
           return;
@@ -69,6 +69,27 @@ export default function ChatRoom() {
     return () => subscription.unsubscribe();
 
   }, [])
+
+  //onDeleteMessage subsription
+  useEffect(() => {
+    const subscription = API.graphql(
+      graphqlOperation(onDeleteMessage)
+    ).subscribe({
+      next: (data) => {
+        const deletedMessage = data.value.data.onDeleteMessage
+        // console.log('deletedMessage')
+        // console.log(deletedMessage.id)
+        setMessages(messages => messages.filter( (x: {id: any}) => {return x.id !== deletedMessage.id }))
+
+      }
+    });
+
+    return () => subscription.unsubscribe();
+
+  }, [])
+
+
+
 
   return (
     <ImageBackground style={{ width: '100%', height: '100%' }} source={BG}>

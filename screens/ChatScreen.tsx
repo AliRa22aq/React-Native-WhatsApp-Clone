@@ -13,7 +13,7 @@ import {
 } from 'aws-amplify'
 
 import { getUser } from './queries'
-import { onUpdateChatRoom } from '../src/graphql/subscriptions'
+import { onUpdateChatRoom, onDeleteChatRoom } from '../src/graphql/subscriptions'
 
 export default function ChatScreen() {
 
@@ -22,6 +22,8 @@ export default function ChatScreen() {
   // console.log('chatRooms')
   // console.log(chatRooms)
 
+
+  // Fetch Chatrooms
   useEffect(() => {
 
     const fetchChatRooms = async () => {
@@ -35,16 +37,48 @@ export default function ChatScreen() {
           }
           )
         )
-        
+
         setChatRooms(userData.data.getUser.chatRoomUser.items)
 
       } catch (e) {
         console.log("Error :" + e)
       }
     }
-
     fetchChatRooms();
   }, [])
+
+
+  // onUpdateChatRoom subscription
+  useEffect(() => {
+    const subscription = API.graphql(
+      graphqlOperation(onUpdateChatRoom)
+    ).subscribe({
+      next: (data) =>{ 
+        const newChatRoom = data.value.data.onUpdateChatRoom;
+        // setChatRooms(chatRooms => [newChatRoom, ...chatRooms])
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [])
+
+    // DeleteChatRoom Subscription
+    useEffect(() => {
+      const subscription = API.graphql(
+        graphqlOperation(onDeleteChatRoom)
+      ).subscribe({
+        next: (data) => {
+          const deletedChatRoom = data.value.data.onDeleteChatRoom
+          console.log('deletedChatRoom')
+          console.log(deletedChatRoom)
+          // setMessages(messages => messages.filter( (x: {id: any}) => {return x.id !== deletedMessage.id }))
+  
+        }
+      });
+  
+      return () => subscription.unsubscribe();
+
+    }, [])
 
 
   return (
@@ -55,7 +89,6 @@ export default function ChatScreen() {
         data={chatRooms}
         renderItem={({ item }) => <ChatListItem chatRoom={item.chatRoom} />}
         keyExtractor={(item) => item.id}
-      // inverted
       />
 
       <NewMessageButton />
