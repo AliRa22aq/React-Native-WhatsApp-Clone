@@ -20,7 +20,8 @@ const ContacListItem = (props:ContacListItemProps) => {
 
 
     const {user} = props
-    //  console.log(user)
+     console.log('user')
+     console.log(user)
 
     // On click we need to ask user to make a new chat room and add other users in it
     const onClick = async () => {

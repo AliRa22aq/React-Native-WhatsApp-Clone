@@ -1,9 +1,9 @@
 import React from 'react';
-import {useEffect, useState} from 'react';
-import {StyleSheet, View, FlatList} from 'react-native';
+import { useEffect, useState } from 'react';
+import { StyleSheet, View, FlatList } from 'react-native';
 import ContacListItem from '../components/ContacListItem';
 import { listUsers } from '../src/graphql/queries';
-import {API, graphqlOperation } from 'aws-amplify';
+import { API, graphqlOperation } from 'aws-amplify';
 
 export default function Contacts() {
 
@@ -31,11 +31,11 @@ export default function Contacts() {
     <View style={styles.container}>
 
       <FlatList
-      style={{width: '100%'}}
+        style={{ width: '100%' }}
         data={users}
-        renderItem={({item})=> <ContacListItem user = {item} /> }
-        keyExtractor={(item)=> item.id }
-        // inverted
+        renderItem={({ item }) => <ContacListItem user={item} />}
+        keyExtractor={(item) => item.id}
+      // inverted
       />
     </View>
   );

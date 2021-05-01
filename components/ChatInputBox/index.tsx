@@ -41,7 +41,6 @@ const ChatInputBox = (props) => {
                     input: {
                         id: chatRoomID,
                         lastMessageID: messageId,
-
                     }
                 }
                 )

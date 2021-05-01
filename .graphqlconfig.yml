@@ -1,6 +1,6 @@
 projects:
-  whatappclone-dev:
-    schemaPath: graphql/schema.json
+  whatappclone:
+    schemaPath: 'G:/PIAIC/Bootcamp2020/React-Native/WhatAppClone/graphql/schema.json'
     includes:
       - src/graphql/**/*.ts
     excludes:
@@ -10,9 +10,6 @@ projects:
         codeGenTarget: typescript
         generatedFileName: src/API.ts
         docsFilePath: src/graphql
-        region: eu-central-1
-        apiId: k4psut3xvzbwhak55ga2hmw23e
-        maxDepth: 2
 extensions:
   amplify:
     version: 3
