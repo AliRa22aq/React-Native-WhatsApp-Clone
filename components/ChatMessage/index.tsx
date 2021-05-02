@@ -17,7 +17,7 @@ export type ChatMessageProps = {
 const index = (props: ChatMessageProps) => {
 
     const route = useRoute();
-    // console.log(route.params.id)
+    console.log(route.params.id)
     // console.log(route.params.name)
 
     const { message, myId } = props;
@@ -56,14 +56,13 @@ const index = (props: ChatMessageProps) => {
             ],
         )
     }
-
-
         
         return (
+            <View>
             <Pressable style={styles.container} onLongPress={showAlert}>
             <View style={[
                 styles.messageBox, {
-                    backgroundColor: isMyMessage() ? '#DCF8C5' : "white",
+                    backgroundColor: isMyMessage() ? '#9ed0ff' : "white",
                     marginRight: isMyMessage() ? 0 : 50,
                     marginLeft: isMyMessage() ? 50 : 0
                 }]}>
@@ -75,6 +74,7 @@ const index = (props: ChatMessageProps) => {
                 <Text style={styles.time}>{moment(message.createdAt).fromNow()}  </Text>
             </View>
         </Pressable>
+        </View>
     )
 }
 

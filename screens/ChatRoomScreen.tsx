@@ -79,7 +79,7 @@ export default function ChatRoom() {
         const deletedMessage = data.value.data.onDeleteMessage
         // console.log('deletedMessage')
         // console.log(deletedMessage.id)
-        setMessages(messages => messages.filter( (x: {id: any}) => {return x.id !== deletedMessage.id }))
+        setMessages(messages => messages.filter((x: { id: any }) => { return x.id !== deletedMessage.id }))
 
       }
     });
@@ -87,8 +87,6 @@ export default function ChatRoom() {
     return () => subscription.unsubscribe();
 
   }, [])
-
-
 
 
   return (

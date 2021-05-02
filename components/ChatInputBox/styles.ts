@@ -36,6 +36,13 @@ const styles = StyleSheet.create({
     icon: {
         marginHorizontal: 5
 
+    },
+    time : {
+        fontSize: 13,
+        color: 'grey',
+        top: 15,
+        right: 10,
+        position: 'absolute' 
     }
 
 });

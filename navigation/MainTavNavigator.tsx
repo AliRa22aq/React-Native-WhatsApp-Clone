@@ -17,6 +17,8 @@ import TabOneScreen from '../screens/ChatScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { MainTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 import CameraScreen from '../screens/CameraScreen';
+import StatusScreen from '../screens/StatusScreen';
+import CallsScreen from '../screens/CallsScreen';
 
 const MainTab = createMaterialTopTabNavigator<MainTabParamList>();
 
@@ -59,12 +61,12 @@ export default function MainTavNavigator() {
 
       <MainTab.Screen
         name="Status"
-        component={TabTwoNavigator}
+        component={StatusScreen}
       />
 
       <MainTab.Screen
         name="Calls"
-        component={TabTwoNavigator}
+        component={CallsScreen}
       />
 
     </MainTab.Navigator>
@@ -94,16 +96,16 @@ export default function MainTavNavigator() {
 //   );
 // }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+// const TabTwoStack = createStackNavigator<TabTwoParamList>();
 
-function TabTwoNavigator() {
-  return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
-      />
-    </TabTwoStack.Navigator>
-  );
-}
+// function TabTwoNavigator() {
+//   return (
+//     <TabTwoStack.Navigator>
+//       <TabTwoStack.Screen
+//         name="TabTwoScreen"
+//         component={TabTwoScreen}
+//         options={{ headerTitle: 'Tab Two Title' }}
+//       />
+//     </TabTwoStack.Navigator>
+//   );
+// }

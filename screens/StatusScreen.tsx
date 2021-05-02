@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
-import Calls from '../components/Calls';
+import Status from '../components/Status';
 import LogOutButton from '../components/LogOutButton';
 import NewMessageButton from '../components/NewMessageButton';
 
 
-export default function CallsScreen() {
+export default function StatusScreen() {
 
    const dummyStatusData = [
      {
@@ -37,7 +37,7 @@ export default function CallsScreen() {
       <FlatList
         style={{ width: '100%' }}
         data={dummyStatusData}
-        renderItem={({ item }) => <Calls data={item} />}
+        renderItem={({ item }) => <Status data={item} />}
         keyExtractor={(item) => item.id}
       />
 

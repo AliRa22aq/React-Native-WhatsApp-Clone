@@ -13,15 +13,14 @@ import Navigation from './navigation';
 import { withAuthenticator } from 'aws-amplify-react-native'
 import {Auth, API, graphqlOperation} from 'aws-amplify'
 
-import {getUser} from './src/graphql/queries'
+// import {getUser} from './screens/queries'
 import {createUser} from './src/graphql/mutations'
+import {getUser} from './src/graphql/queries'
 
 
 import Amplify from 'aws-amplify'
 import config from './aws-exports'
 Amplify.configure(config)
-
-
 
 
 const randomeImages = [
