@@ -1,5 +1,6 @@
-Credit: Vadim Savin
+Credit: Vadim Savin <br />
 https://www.notjust.dev/
+<br />
 
 Icons from: https://icons.expo.fyi/
 
