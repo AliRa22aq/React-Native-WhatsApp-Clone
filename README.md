@@ -1,6 +1,6 @@
-Credit: Vadim Savin <br />
-https://www.notjust.dev/
-<br />
+Credits: Vadim Savin <br />
+website: https://www.notjust.dev/ <br />
+YouTube: https://www.youtube.com/channel/UCYSa_YLoJokZAwHhlwJntIA <br />
 
 Icons from: https://icons.expo.fyi/
 
